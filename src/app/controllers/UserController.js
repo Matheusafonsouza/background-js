@@ -1,4 +1,4 @@
-import Mail from '../providers/MailProvider';
+import Queue from '../providers/QueueProvider';
 
 export default {
   async create(req, res) {
@@ -17,7 +17,7 @@ export default {
       html: `Olá. ${name}, bem-vindo ao sistema de filas de teste :D`,
     };
 
-    Mail.sendMail(mail);
+    await Queue.add({ mail });
 
     return res.status(201).json(user);
   },

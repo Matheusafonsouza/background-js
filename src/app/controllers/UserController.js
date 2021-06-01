@@ -17,8 +17,22 @@ export default {
       html: `Olá. ${name}, bem-vindo ao sistema de filas de teste :D`,
     };
 
-    await Queue.add({ mail });
+    await Queue.add('RegistrationMail', { mail });
 
     return res.status(201).json(user);
+  },
+
+  async show(req, res) {
+    const { name, email, password } = req.body;
+
+    const user = {
+      name,
+      email,
+      password,
+    };
+
+    await Queue.add('UserReport', { user });
+
+    return res.status(200).json(user);
   },
 };

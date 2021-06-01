@@ -6,4 +6,4 @@ COPY . .
 
 EXPOSE 3333
 
-CMD [ "npm", "run", "dev:server" ]
+CMD [ "npm", "run", "dev" ]
